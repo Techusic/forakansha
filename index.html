@@ -643,6 +643,25 @@
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Playfair+Display:ital@1&display=swap');
+
+        .floating-heart {
+            position: fixed;
+            font-size: 24px;
+            animation: floatHeart 10s linear infinite;
+            pointer-events: none;
+            z-index: -1; /* Ensure hearts stay in the background */
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -650,11 +669,11 @@
         <!-- Existing content -->
         <div class="message-box">
             <div class="main-heading">
-                <span class="letter-letter">T</span>his Might Be <span class="heart-divider">♥</span><br>My Last Letter To You
+                <span class="letter-letter">T</span>his Might Be <span class="heart-divider"></span><br>My Last Letter To You
             </div>
             <div class="sub-heading">
                 <div class="ribbon">~ A Final Love Note ~</div>
-                <p class="fancy-subtext">This was supposed to be a valentine's gift...<br>Now it's a memory capsule of our beautiful moments together</p>
+                <p class="fancy-subtext">This was supposed to be a valentine's gift<br>But now it's a memory capsule of our beautiful moments together</p>
             </div>
             <!-- Title above the audio player -->
             <!-- Replace Spotify Player with custom audio player -->
@@ -864,6 +883,12 @@
             }
         }
 
+        // Ensure the song starts playing as soon as the webpage is opened
+        window.addEventListener('load', () => {
+            const audioPlayer = document.getElementById('loveSong');
+            audioPlayer.play();
+        });
+
         // Virtual Hug Animation
         function sendVirtualHug() {
             for(let i = 0; i < 30; i++) {
@@ -1013,6 +1038,25 @@
             video.muted = false;
             video.play();
         }
+
+        // Function to create floating hearts in the background
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerText = '❤️';
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.top = `${Math.random() * 100}vh`;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 10000);
+        }
+
+        // Create a larger number of floating hearts initially
+        for (let i = 0; i < 300; i++) {
+            createFloatingHeart();
+        }
+
+        // Ensure hearts keep floating constantly
+        setInterval(createFloatingHeart, 50);
 
         // Add remaining functions from previous version
     </script>
