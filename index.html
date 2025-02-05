@@ -24,23 +24,21 @@
         }
 
         .container {
-            max-width: 900px; /* Make the container a bit wider */
+            max-width: 1100px; /* Make the container a bit wider */
             margin: 0 auto;
             padding: 20px;
             text-align: center;
-            background: #a2819c36;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background: #ffffff00;
             animation: containerBackgroundChange 10s infinite alternate;
             padding-bottom: 100px; /* Add padding to make the page longer */
         }
 
         @keyframes containerBackgroundChange {
-            0% { background-color: #c295b9d1; }
-            25% { background-color: #d9a3b3; }
-            50% { background-color: #e6b3c2; }
-            75% { background-color: #f2c2d1; }
-            100% { background-color: #ffccd9; }
+            0% { background-color: #ffffff00; }
+            25% { background-color: #ffffff00; }
+            50% { background-color: #ffffff00; }
+            75% { background-color: #ffffff00; }
+            100% { background-color: #ffffff00; }
         }
 
         /* Add new styles for additional features */
@@ -50,10 +48,11 @@
             align-items: center;
             gap: 20px; /* Increased gap */
             margin: 40px 0; /* Increased margin */
+            animation: floatHeading 2s ease-in-out infinite;
         }
 
         .gallery + .timeline {
-            margin-top: 60px; /* Add space between gallery and timeline */
+            margin-top: 100px; /* Add space between gallery and timeline */
         }
 
         .gallery img {
@@ -64,6 +63,7 @@
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
+            animation: floatHeading 2s ease-in-out infinite;
         }
         .gallery video {
             width: 100%;
@@ -73,6 +73,7 @@
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
+            animation: floatHeadingReverse 2s ease-in-out infinite;
         }
 
         .gallery img:hover {
@@ -81,13 +82,13 @@
         }
 
         .gallery video:hover {
-            transform: scale(1.05) translateX(-10px); /* Zoom in a bit to the left */
+            transform: scale(0.95) translateX(-10px); /* Zoom in a bit to the left */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
         .timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 50px auto;
             padding: 0 20px;
         }
@@ -149,11 +150,13 @@
         .timeline-item:nth-child(odd)::after {
             right: -30px;
             transform: translateY(-50%);
+            animation: floatHeading 2s ease-in-out infinite;
         }
 
         .timeline-item:nth-child(even)::after {
             left: -30px;
             transform: translateY(-50%);
+            animation: floatHeadingReverse 2s ease-in-out infinite;
         }
 
         /* Dots */
@@ -238,12 +241,14 @@
             .gallery {
                 flex-direction: column;
                 gap: 10px;
+                animation: floatHeading 2s ease-in-out infinite;
             }
 
             .gallery img, .gallery video {
                 width: 100%;
                 max-width: 300px;
                 margin: 10px 0;
+                animation: floatHeading 2s ease-in-out infinite;
             }
 
             .timeline {
@@ -333,9 +338,11 @@
         .audio-player {
             margin: 20px 0;
             background: #ffd9d9; /* Harmonize with website colors */
+            border : 4px solid #ff9999; /* Add border */
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(255, 153, 153, 0.2);
+            animation: floatHeading 2s ease-in-out infinite;
         }
 
         .audio-player h3 {
@@ -452,7 +459,20 @@
             color: #d63384; /* Same color as "Our Song" */
             font-family: 'Pacifico', cursive;
             font-size: 24px;
-            margin: 20px 0;
+            margin: 2rem auto;
+            background: linear-gradient(to right, #fff0f3, #ffccd5);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            background: linear-gradient(to right, #fff0f3, #ffccd5);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            text-align: center; /* Ensure subheading stays centered */
+            animation: floatHeading 2s ease-in-out infinite;
         }
 
         @media (max-width: 768px) {
@@ -567,10 +587,19 @@
             font-size: 3.5rem;
             color: #ff4d6d;
             text-shadow: 2px 2px 4px rgba(255, 77, 109, 0.3);
-            margin: 2rem 0;
-            position: relative;
-            animation: floatHeading 3s ease-in-out infinite;
+            animation: floatHeading 2s ease-in-out infinite;
             text-align: center; /* Ensure heading stays centered */
+            background: linear-gradient(to right, #fff0f3, #ffccd5);
+            border-top: 4px solid #ff758f;
+            border-bottom: 4px solid #ff758f;
+            padding: 1rem 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            background: linear-gradient(to right, #fff0f3, #ffccd5);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            text-align: center; /* Ensure subheading stays centered */
         }
 
         .letter-letter {
@@ -587,6 +616,7 @@
 
         .sub-heading {
             border-left: 4px solid #ff758f;
+            border-right: 4px solid #ff758f;
             padding: 1rem 2rem;
             margin: 2rem auto;
             max-width: 600px;
@@ -595,6 +625,7 @@
             position: relative;
             overflow: hidden;
             text-align: center; /* Ensure subheading stays centered */
+            animation: floatHeadingReverse 2s ease-in-out infinite;
         }
 
         .sub-heading::before {
@@ -626,8 +657,13 @@
         }
 
         @keyframes floatHeading {
-            0%, 100% { transform: translateY(0); }
+            0%, 100% { transform: translateY(10px); }
             50% { transform: translateY(-10px); }
+        }
+
+        @keyframes floatHeadingReverse {
+            0%, 100% { transform: translateY(-15); }
+            50% { transform: translateY(10px); }
         }
 
         @keyframes heartbeat {
@@ -723,7 +759,7 @@
                 <div class="timeline-content">
                     <div class="timeline-date">First Date 🍽️ [Feb | 10 | 2024]</div>
                     <p>Our fist date at Querirdo</p>
-                    <img src="date.jpg" alt="First Date" width="350%" height = "350px">
+                    <img src="date.jpg" alt="First Date" width="350%" height="350px">
                 </div>
             </div>
             <div class="timeline-item">
