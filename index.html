@@ -52,7 +52,7 @@
         }
 
         .gallery + .timeline {
-            margin-top: 100px; /* Add space between gallery and timeline */
+            margin-top: 40px; /* Add space between gallery and timeline */
         }
 
         .gallery img {
@@ -86,11 +86,16 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
+        .gallery img:hover, .gallery video:hover {
+            animation-play-state: paused; /* Stop floating animation on hover */
+        }
+
         .timeline {
             position: relative;
             max-width: 900px;
             margin: 50px auto;
             padding: 0 20px;
+            /* animation: floatHeadingReverse 2s ease-in-out infinite; */
         }
 
         /* Central vertical line */
@@ -104,6 +109,7 @@
             left: 50%;
             margin-left: -1.5px;
             z-index: 1;
+            
         }
 
         .timeline-item {
@@ -120,6 +126,7 @@
             opacity: 0;
             transform: translateX(-100px); /* Adjusted for initial state */
             transition: all 0.8s ease-out;
+            /* animation: floatHeadingreverse 2s ease-in-out infinite; */
         }
 
         .timeline-item:hover {
@@ -130,11 +137,28 @@
         /* Alternate sides */
         .timeline-item:nth-child(odd) {
             left: -5%;
+            animation: floatUpDown 2s ease-in-out infinite;
         }
 
         .timeline-item:nth-child(even) {
             left: 55%;
             transform: translateX(100px); /* Adjusted for initial state */
+            animation: floatUpDown 2s ease-in-out infinite;
+        }
+
+        @keyframes floatLeft {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-10px); }
+        }
+
+        @keyframes floatRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         /* Connector lines */
@@ -145,18 +169,19 @@
             height: 3px;
             background: #ff9999;
             top: 50%;
+            
         }
 
         .timeline-item:nth-child(odd)::after {
             right: -30px;
             transform: translateY(-50%);
-            animation: floatHeading 2s ease-in-out infinite;
+            /* animation: floatHeadingreverse 2s ease-in-out infinite; */
         }
 
         .timeline-item:nth-child(even)::after {
             left: -30px;
             transform: translateY(-50%);
-            animation: floatHeadingReverse 2s ease-in-out infinite;
+            /* animation: floatHeadingReverse 2s ease-in-out infinite; */
         }
 
         /* Dots */
@@ -167,6 +192,7 @@
             top: 50%;
             transform: translateY(-50%);
             z-index: 3;
+            /* animation: floatHeading 2s ease-in-out infinite; */
         }
 
         .timeline-item:nth-child(odd)::before {
@@ -202,7 +228,8 @@
 
         .timeline-item:nth-child(2) img {
             object-position: 0 20%; /* Don't show top 20% */
-            max-width: 150px; /* Make the first date photo smaller */
+            max-width: 80%; /* Adjust width to match videos */
+            height: 350px; /* Adjust height to match videos */
         }
 
         .timeline-item:hover img,
@@ -342,12 +369,13 @@
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(255, 153, 153, 0.2);
-            animation: floatHeading 2s ease-in-out infinite;
+            /* animation: floatHeading 2s ease-in-out infinite; */
         }
 
         .audio-player h3 {
             color: #d63384; /* Solid purple-pink color */
             font-family: 'Pacifico', cursive;
+            font-size: 36px; /* Changed size */
         }
 
         .player-controls {
@@ -472,7 +500,7 @@
             position: relative;
             overflow: hidden;
             text-align: center; /* Ensure subheading stays centered */
-            animation: floatHeading 2s ease-in-out infinite;
+            /* animation: floatHeading 2s ease-in-out infinite; */
         }
 
         @media (max-width: 768px) {
@@ -538,7 +566,8 @@
             position: relative;
             width: 300px;
             height: 300px;
-            margin: 50px auto;
+            margin: 1px auto; /* Decreased margin */
+            margin-bottom: 100px;
             perspective: 1000px;
         }
 
@@ -587,7 +616,7 @@
             font-size: 3.5rem;
             color: #ff4d6d;
             text-shadow: 2px 2px 4px rgba(255, 77, 109, 0.3);
-            animation: floatHeading 2s ease-in-out infinite;
+            /* animation: floatHeading 2s ease-in-out infinite; */
             text-align: center; /* Ensure heading stays centered */
             background: linear-gradient(to right, #fff0f3, #ffccd5);
             border-top: 4px solid #ff758f;
@@ -1087,12 +1116,12 @@
         }
 
         // Create a larger number of floating hearts initially
-        for (let i = 0; i < 300; i++) {
+        for (let i = 0; i < 100; i++) {
             createFloatingHeart();
         }
 
         // Ensure hearts keep floating constantly
-        setInterval(createFloatingHeart, 50);
+        setInterval(createFloatingHeart, 80);
 
         // Add remaining functions from previous version
     </script>
