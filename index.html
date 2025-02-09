@@ -1011,6 +1011,7 @@
         document.querySelectorAll('.gallery img').forEach(img => {
             img.onclick = () => {
                 const modal = document.createElement('div');
+                modal.className = 'modal';
                 modal.style.position = 'fixed';
                 modal.style.top = '0';
                 modal.style.left = '0';
@@ -1031,6 +1032,9 @@
                 
                 modal.appendChild(fullImg);
                 document.body.appendChild(modal);
+
+                // Add history state for back button functionality
+                history.pushState({ modalOpen: true }, '');
             }
         });
 
@@ -1038,6 +1042,7 @@
         document.querySelectorAll('.gallery video').forEach(video => {
             video.onclick = () => {
                 const modal = document.createElement('div');
+                modal.className = 'modal';
                 modal.style.position = 'fixed';
                 modal.style.top = '0';
                 modal.style.left = '0';
@@ -1060,8 +1065,21 @@
                 
                 modal.appendChild(fullVideo);
                 document.body.appendChild(modal);
+
+                // Add history state for back button functionality
+                history.pushState({ modalOpen: true }, '');
             }
         });
+
+        // Handle back button to close modal
+        window.onpopstate = (event) => {
+            if (event.state && event.state.modalOpen) {
+                const modal = document.querySelector('.modal');
+                if (modal) {
+                    modal.remove();
+                }
+            }
+        };
 
         // Show image on timeline item click
         function showImage(src) {
