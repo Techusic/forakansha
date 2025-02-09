@@ -9,18 +9,18 @@
         body {
             margin: 0;
             padding: 0;
-            background: #fff0f0;
+            background: linear-gradient(to right, #ffd2fb, #fc9fcf);
             font-family: 'Arial', sans-serif;
             overflow-x: hidden;
             animation: backgroundChange 10s infinite alternate;
         }
 
         @keyframes backgroundChange {
-            0% { background-color: #c7a9c1dd; }
-            25% { background-color: #d7a5bc; }
-            50% { background-color: #ffd9d9; }
-            75% { background-color: #ffcccc; }
-            100% { background-color: #ffb3b3; }
+            0% { background-color: #ffd2fb; }
+            25% { background-color: #e69ffc; }
+            50% { background-color: #f8d2ff; }
+            75% { background-color: #fc9fee; }
+            100% { background-color: #ffd2fb; }
         }
 
         .container {
@@ -28,17 +28,19 @@
             margin: 0 auto;
             padding: 20px;
             text-align: center;
-            background: #ffffff00;
-            animation: containerBackgroundChange 10s infinite alternate;
+            background: rgba(0, 0, 0, 0);
+            border-radius: 0px;
+            /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
+            /* animation: containerBackgroundChange 10s infinite alternate; */
             padding-bottom: 100px; /* Add padding to make the page longer */
         }
 
         @keyframes containerBackgroundChange {
-            0% { background-color: #ffffff00; }
-            25% { background-color: #ffffff00; }
-            50% { background-color: #ffffff00; }
-            75% { background-color: #ffffff00; }
-            100% { background-color: #ffffff00; }
+            0% { background-color: rgba(255, 255, 255, 0.8); }
+            25% { background-color: rgba(255, 255, 255, 0.9); }
+            50% { background-color: rgba(255, 255, 255, 0.8); }
+            75% { background-color: rgba(255, 255, 255, 0.9); }
+            100% { background-color: rgba(255, 255, 255, 0.8); }
         }
 
         /* Add new styles for additional features */
@@ -46,7 +48,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            gap: 20px; /* Increased gap */
+            gap: 40px; /* Increased gap */
             margin: 40px 0; /* Increased margin */
             animation: floatHeading 2s ease-in-out infinite;
         }
@@ -59,8 +61,8 @@
             width: 100%;
             height: 350px; /* Increased height */
             object-fit: cover;
-            object-position: top 5%; /* Show part between top and center */
-            border-radius: 10px;
+            border-radius: 15px;
+            object-position: top 40%;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             animation: floatHeading 2s ease-in-out infinite;
@@ -69,24 +71,16 @@
             width: 100%;
             height: 350px; /* Increased height */
             object-fit: cover;
-            object-position: top; /* Show top part of the image and video */
-            border-radius: 10px;
+            object-position: top; /* Ensure the top part of the video appears */
+            border-radius: 15px;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
-            animation: floatHeadingReverse 2s ease-in-out infinite;
-        }
-
-        .gallery img:hover {
-            transform: scale(0.95); /* Zoom out */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery video:hover {
-            transform: scale(0.95) translateX(-10px); /* Zoom in a bit to the left */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: floatHeadingreverse 2s ease-in-out infinite;
         }
 
         .gallery img:hover, .gallery video:hover {
+            transform: scale(1.05); /* Zoom out */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             animation-play-state: paused; /* Stop floating animation on hover */
         }
 
@@ -117,8 +111,8 @@
             width: 45%;
             padding: 20px;
             background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(255, 153, 153, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             margin: 40px 0;
             z-index: 2;
             cursor: pointer;
@@ -130,8 +124,8 @@
         }
 
         .timeline-item:hover {
-            transform: scale(1); /* Zoom out */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05); /* Zoom out */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
 
         /* Alternate sides */
@@ -215,15 +209,16 @@
             margin-bottom: 10px;
         }
 
-        .timeline-item img {
+        .timeline-item img, .timeline-item video {
             display: none;
             position: absolute;
+            object-fit: cover;
             top: -400px; /* Adjusted to hover above the top border of the timeline element */
             left: 50%;
             transform: translateX(-50%);
             max-width: 250px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
 
         .timeline-item:nth-child(2) img {
@@ -233,22 +228,7 @@
         }
 
         .timeline-item:hover img,
-        .timeline-item:focus img {
-            display: block;
-        }
-
-        .timeline-item video {
-            display: none;
-            position: absolute;
-            top: -400px; /* Adjusted to hover above the top border of the timeline element */
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 250px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            object-fit: cover; /* Ensure video fits its aspect ratio */
-        }
-
+        .timeline-item:focus img,
         .timeline-item:hover video,
         .timeline-item:focus video {
             display: block;
@@ -326,13 +306,14 @@
         }
 
         .video-message {
-            background: #f5bff3;
+            background: linear-gradient(to right, #fff0f3, #ffccd5);
             padding: 20px;
             border-radius: 15px;
             margin: 20px auto; /* Center the box */
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             max-width: 800px; /* Shrink the box */
-            animation: videoMessageBackgroundChange 10s infinite alternate;
+            /* animation: videoMessageBackgroundChange 10s infinite alternate; */
+            position: relative; /* Ensure the image is positioned relative to the video message */
         }
 
         @keyframes videoMessageBackgroundChange {
@@ -727,6 +708,29 @@
                 opacity: 0;
             }
         }
+        .video-message:hover img {
+            display: block;
+        }
+        .video-message img {
+            display: none;
+            position: absolute;
+            top: -400px; /* Adjusted to hover above the top border of the video message */
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 250px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .video-message:hover::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1); /* Optional: Add a slight background overlay */
+        }
     </style>
 </head>
 <body>
@@ -818,18 +822,21 @@
                     <img src="hands.jpg" alt="First Movie">
                 </div>
             </div>
-            <div class="timeline-item" onclick="showImage('anniversary.jpg')">
+            <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">First Trip ✈️ Anniversary 🎉 [Date]</div>
-                    <p>Celebrating our first anniversary</p>
-                    <img src="anniversary.jpg" alt="Anniversary">
+                    <div class="timeline-date">First Trip ✈️ & 6 Month Anniversary 🎉 [Jul | 22 | 2024]</div>
+                    <p>Magical✨</p>
+                    <video id="kiss2Video" autoplay loop muted width="100%" height="350px">
+                        <source src="kiss2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    
                 </div>
             </div>
-            <div class="timeline-item" onclick="showImage('special.jpg')">
+            <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">Special Moment 🌟 [Date]</div>
-                    <p>That unforgettable moment at [place]</div>
-                    <img src="special.jpg" alt="Special Moment">
+                    <div class="timeline-date">And Many More</div>
+                    <p>There were more but i couldn't get myself to include them</div>
                 </div>
             </div>
             <!-- Add more timeline items -->
@@ -848,12 +855,12 @@
         </div>
 
         <!-- Video Message -->
-        <div class="video-message">
-            <h2>A Message From My Heart</h2>
-            <video width="100%" controls>
-                <source src="apology-video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        <div class="video-message" onclick="showImage('letter.jpg')">
+            <h2>A Message? <br>(it was supposed to be a letter but i burnt it)</h2>
+            <p style="font-family: 'Pacifico', cursive; font-size: 24px; color: #d63384; text-align: center;">
+                Meri pyari cutie, words cannot express how much you mean to me. Every moment spent with you has been a treasure, and I will forever cherish our memories. Though we may be apart, my love for you will never fade. You will always hold a special place in my heart. Thank you for being a part of my life. I love you, always and forever.
+            </p>
+            <img src="letter.jpg" alt="Message Image">
         </div>
 
         <!-- Secret Message (Left-click to view) -->
