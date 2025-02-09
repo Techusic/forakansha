@@ -1110,12 +1110,10 @@
         }
 
         // Handle back button to close modal
-        window.onpopstate = (event) => {
-            if (event.state && event.state.modalOpen) {
-                const modal = document.querySelector('.modal');
-                if (modal) {
-                    modal.remove();
-                }
+        window.onpopstate = () => {
+            const modal = document.querySelector('.modal');
+            if (modal) {
+                modal.remove();
             }
         };
 
