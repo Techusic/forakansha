@@ -1019,7 +1019,10 @@
                 modal.style.height = '100%';
                 modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
                 modal.style.zIndex = '9999';
-                modal.onclick = () => modal.remove();
+                modal.onclick = () => {
+                    modal.remove();
+                    history.back(); // Ensure history state is updated
+                };
                 
                 const fullImg = document.createElement('img');
                 fullImg.src = img.src;
@@ -1050,7 +1053,10 @@
                 modal.style.height = '100%';
                 modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
                 modal.style.zIndex = '9999';
-                modal.onclick = () => modal.remove();
+                modal.onclick = () => {
+                    modal.remove();
+                    history.back(); // Ensure history state is updated
+                };
                 
                 const fullVideo = document.createElement('video');
                 fullVideo.src = video.querySelector('source').src;
@@ -1084,6 +1090,7 @@
         // Show image on timeline item click
         function showImage(src) {
             const modal = document.createElement('div');
+            modal.className = 'modal';
             modal.style.position = 'fixed';
             modal.style.top = '0';
             modal.style.left = '0';
@@ -1091,7 +1098,10 @@
             modal.style.height = '100%';
             modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
             modal.style.zIndex = '9999';
-            modal.onclick = () => modal.remove();
+            modal.onclick = () => {
+                modal.remove();
+                history.back(); // Ensure history state is updated
+            };
             
             const fullImg = document.createElement('img');
             fullImg.src = src;
@@ -1104,6 +1114,9 @@
             
             modal.appendChild(fullImg);
             document.body.appendChild(modal);
+
+            // Add history state for back button functionality
+            history.pushState({ modalOpen: true }, '');
         }
 
         // Scroll to reveal animation for timeline items
